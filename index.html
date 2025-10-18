@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Jackson Morilla | Business Analytics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --dark-accent: #1e3a8a;
+            --text: #0f172a;
+            --text-light: #475569;
+            --bg: #ffffff;
+            --bg-light: #eff6ff;
+            --bg-card: #dbeafe;
+            --border: #93c5fd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            padding: 8rem 0 6rem;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100"><path d="M0,60 Q300,10 600,60 T1200,60 L1200,100 L0,100 Z" fill="%23eff6ff"/></svg>');
+            background-size: cover;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+            font-weight: 500;
+        }
+
+        .hero .location {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--primary) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--secondary) 2px, transparent 2px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            margin: 1.5rem auto 0;
+            border-radius: 3px;
+        }
+
+        .education-section {
+            background: var(--bg-light);
+        }
+
+        .about-intro {
+            max-width: 850px;
+            margin: 0 auto 5rem;
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-intro::before {
+            content: '💼';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.05;
+        }
+
+        .about-intro p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item-wrapper {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .education-card,
+        .timeline-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+            width: calc(50% - 50px);
+            position: relative;
+            transition: all 0.4s;
+            border: 2px solid var(--border);
+        }
+
+        .education-card::before,
+        .timeline-item::before {
+            content: '📚';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            opacity: 0.1;
+        }
+
+        .education-card:hover,
+        .timeline-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.2);
+            border-color: var(--accent);
+        }
+
+        .timeline-item-wrapper:nth-child(odd) .education-card,
+        .timeline-item-wrapper:nth-child(odd) .timeline-item {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 35px;
+            box-shadow: 0 0 0 6px var(--bg-card);
+            z-index: 1;
+        }
+
+        .education-card h3,
+        .timeline-title {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .education-card .degree {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .education-card .period,
+        .timeline-date {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .coursework {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--bg-card);
+        }
+
+        .coursework-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .coursework-list {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+            transition: all 0.4s;
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--bg-card) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .skill-category:hover::before {
+            opacity: 1;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
+            border-color: var(--accent);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-list li {
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--bg-light);
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-list li:hover {
+            color: var(--primary);
+            padding-left: 8px;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-company {
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .timeline-responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-responsibilities li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .timeline-responsibilities li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+            transition: all 0.4s;
+            border: 2px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .project-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border-radius: 25px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .achievements-section {
+            background: var(--bg-light);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+            text-align: center;
+            transition: all 0.4s;
+            border: 2px solid var(--border);
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.2);
+            border-color: var(--accent);
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+            filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
+        }
+
+        .achievement-card h3 {
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .achievement-card .year {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .achievement-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .achievement-card a {
+            display: inline-block;
+            margin-top: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .achievement-card a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .gallery-section {
+            padding: 3rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
+            transition: all 0.4s;
+            border: 3px solid var(--border);
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: '📸';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.5;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 16px 40px rgba(14, 165, 233, 0.25);
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .documents-section {
+            background: var(--bg-light);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .document-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
+            transition: all 0.4s;
+            border: 2px solid var(--border);
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--bg-card) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        .document-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(14, 165, 233, 0.2);
+            border-color: var(--accent);
+        }
+
+        .document-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+            filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card h3 {
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card .doc-type {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content > p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 16px;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.4s;
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.1);
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(14, 165, 233, 0.2);
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .contact-link span {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.2));
+        }
+
+        .contact-link strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-link small {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark-accent) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
+        }
+
+        footer p {
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .projects-grid,
+            .achievements-grid,
+            .gallery-grid,
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .education-card,
+            .timeline-item {
+                width: calc(100% - 70px);
+                margin-left: 70px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: none;
+            }
+
+            .about-intro {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AJM</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#documents">Documents</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Adrian Jackson M. Morilla</h1>
+                <p class="subtitle">Business Analytics Graduate | Data-Driven Problem Solver | Innovation Enthusiast</p>
+                <p class="location">📍 Currently: Xavier University, Cincinnati | Based in: Norwood, Ohio</p>
+                <p class="location" style="margin-top: 0.5rem;">📞 +1 (513) 801-5617 | 📧 AdrianMorilla3508@gmail.com</p>
+                <div class="cta-buttons">
+                    <a href="#about" class="btn btn-primary">View My Work</a>
+                    <a href="https://www.linkedin.com/in/adrian-jackson-morilla-a5899b203/" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="education-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Passionate about transforming data into strategic insights</p>
+            
+            <div class="about-intro">
+                <p>I'm a passionate Business Analytics professional currently pursuing my Master's degree at Xavier University. With a First Class Honours degree in Business Information Systems from Middlesex University Dubai, I specialize in transforming complex data into actionable insights that drive strategic decision-making.</p>
+                
+                <p>My experience spans IT support, UX/UI project coordination, and innovative research projects including presenting cybersecurity solutions to Dubai Police leadership. I'm particularly interested in leveraging data analytics, business intelligence, and emerging technologies to solve real-world business challenges.</p>
+                
+                <p>As a recipient of UAE Golden Card residency and former DP World Tour Marshall, I bring a unique blend of technical expertise, leadership experience, and cross-cultural competency to every project.</p>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 3rem;">Education</h2>
+            <p class="section-subtitle">Academic excellence in Business Analytics and Information Systems</p>
+            <div class="timeline">
+                <div class="timeline-item-wrapper">
+                    <div class="timeline-dot"></div>
+                    <div class="education-card">
+                        <h3>Xavier University</h3>
+                        <p class="degree">Master of Science in Business Analytics</p>
+                        <p class="period">📍 Cincinnati, Ohio | August 2025 - Present</p>
+                        <div class="coursework">
+                            <p class="coursework-title">Coursework:</p>
+                            <p class="coursework-list">Marketing Research • Data Privacy & Ethics • Predictive Analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item-wrapper">
+                    <div class="timeline-dot"></div>
+                    <div class="education-card">
+                        <h3>Middlesex University Dubai</h3>
+                        <p class="degree">Bachelor of Science in Business Information Systems</p>
+                        <p class="period">🎓 First Class Honours | September 2021 - May 2024</p>
+                        <div class="coursework">
+                            <p class="coursework-title">Coursework:</p>
+                            <p class="coursework-list">Project Management • Data Visualization • Big Data • Business Intelligence • Strategic Information Systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Comprehensive expertise across analytics, programming, and business intelligence</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>📊 Data Analysis & Visualization</h3>
+                    <ul class="skill-list">
+                        <li>Power BI</li>
+                        <li>Tableau</li>
+                        <li>Microsoft Excel (Advanced)</li>
+                        <li>Google Analytics</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Programming & Statistics</h3>
+                    <ul class="skill-list">
+                        <li>R Programming</li>
+                        <li>Statistical Modeling</li>
+                        <li>Regression Analysis</li>
+                        <li>Data Manipulation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🗄️ Database & CRM</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>Oracle Database</li>
+                        <li>Salesforce</li>
+                        <li>Oracle CRM</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📈 Research & Reporting</h3>
+                    <ul class="skill-list">
+                        <li>Insight-Driven Reports</li>
+                        <li>Dashboard Creation</li>
+                        <li>Data Storytelling</li>
+                        <li>Decision Support Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background: var(--bg-light);">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Building expertise through hands-on technology and project coordination roles</p>
+            <div class="timeline experience-timeline">
+                <div class="timeline-item-wrapper">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">May 2024 - August 2024</div>
+                        <div class="timeline-title">IT Support Intern</div>
+                        <div class="timeline-company">Royal Construct Technical Services Co.</div>
+                        <ul class="timeline-responsibilities">
+                            <li>Executed hardware and software maintenance to optimize system performance</li>
+                            <li>Collaborated with team members to achieve technical objectives efficiently</li>
+                            <li>Configured new user accounts and resolved system configuration issues</li>
+                            <li>Provided technical support and troubleshooting for daily operations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item-wrapper">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">January 2024 - May 2024</div>
+                        <div class="timeline-title">Project Coordinator - UX/UI Design</div>
+                        <div class="timeline-company">Freelance (Remote)</div>
+                        <ul class="timeline-responsibilities">
+                            <li>Coordinated and negotiated with clients to understand their specific requirements</li>
+                            <li>Provided detailed specifications to web developers for implementation</li>
+                            <li>Improved user experience workflows and coordination using Jira</li>
+                            <li>Managed project timelines and deliverables effectively</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Innovative solutions across research, cybersecurity, and business intelligence</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🧠</div>
+                        <h3 style="color: white;">Neuralink & IoT Integration</h3>
+                    </div>
+                    <div class="project-content">
+                        <h3>Undergraduate Research Project</h3>
+                        <p>Investigated the compatibility of Neuralink technology with IoT-enabled smart home systems, examining efficiency and safety implications.</p>
+                        <p>Presented findings to academic audiences using data-driven storytelling and logical analysis.</p>
+                        <div class="project-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">Smart Homes</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">Academic Presentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🛡️</div>
+                        <h3 style="color: white;">DeepFake ETDS</h3>
+                    </div>
+                    <div class="project-content">
+                        <h3>Dubai Police Innovation Sprint</h3>
+                        <p>Presented a comprehensive case study to Dubai Police leaders addressing deepfake technology threats.</p>
+                        <p>Proposed Early Threat Detection System (ETDS) solution to combat malicious use of deepfake technology.</p>
+                        <div class="project-tags">
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">AI Ethics</span>
+                            <span class="tag">Innovation</span>
+                            <span class="tag">Dubai Police</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <h3 style="color: white;">Business Intelligence Analysis</h3>
+                    </div>
+                    <div class="project-content">
+                        <h3>Lulu Group International LLC</h3>
+                        <p>Conducted comprehensive business intelligence analysis for a major retail corporation with $8 billion annual revenue.</p>
+                        <p>Designed data warehouse schema, implemented ETL processes, and created OLAP cube visualizations for strategic decision-making.</p>
+                        <div class="project-tags">
+                            <span class="tag">Business Intelligence</span>
+                            <span class="tag">Data Warehousing</span>
+                            <span class="tag">OLAP</span>
+                            <span class="tag">Big Data</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🏢</div>
+                        <h3 style="color: white;">Strategic Information Systems</h3>
+                    </div>
+                    <div class="project-content">
+                        <h3>Provident Real Estate Case Study</h3>
+                        <p>Developed comprehensive MIS consultancy recommendations for a Dubai-based real estate agency with $22.3M revenue.</p>
+                        <p>Analyzed globalization strategies, social media integration, agile methodologies, and AI implementation opportunities.</p>
+                        <div class="project-tags">
+                            <span class="tag">Strategic Planning</span>
+                            <span class="tag">MIS</span>
+                            <span class="tag">Real Estate</span>
+                            <span class="tag">Consulting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <p class="section-subtitle">Celebrating academic excellence and professional milestones</p>
+            
+            <div class="gallery-section">
+                <h3 style="text-align: center; color: var(--text-light); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Dubai Police Innovation Sprint Recognition</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/dubai-police-1.jpeg" alt="Dubai Police Innovation Sprint Award Ceremony - Team Photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 100%; height: 300px; background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; padding: 2rem;">
+                            🏆<br>Dubai Police Innovation Sprint<br>Award Ceremony
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/dubai-police-2.jpeg" alt="Dubai Police Innovation Sprint - Recognition Moment" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 100%; height: 300px; background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%); align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; padding: 2rem;">
+                            🎖️<br>Recognition from<br>Dubai Police Leadership
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/dubai-police-3.jpeg" alt="Dubai Police Innovation Sprint - DeepFake ETDS Presentation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 100%; height: 300px; background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; padding: 2rem;">
+                            🚀<br>DeepFake ETDS<br>Innovation Presentation
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-grid" style="margin-top: 4rem;">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>First Class Honours Graduate</h3>
+                    <p class="year">2024</p>
+                    <p>Graduated with First Class Honours from Middlesex University Dubai, demonstrating academic excellence in Business Information Systems.</p>
+                    <a href="https://verify.mdx.ac.uk/?reference=47535644-01-0TFF" target="_blank">Verify Certificate →</a>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Dubai Police Innovation Sprint</h3>
+                    <p class="year">2024</p>
+                    <p>Selected to present DeepFake ETDS solution to Dubai Police HQ leadership, addressing critical cybersecurity challenges.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🌟</div>
+                    <h3>Golden Card Residency - UAE</h3>
+                    <p class="year">2022-2023</p>
+                    <p>Awarded prestigious UAE Golden Card residency, recognizing exceptional contributions and achievements.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">⛳</div>
+                    <h3>DP World Tour Marshall</h3>
+                    <p class="year">2022-2023</p>
+                    <p>Served as official marshall for the DP World Tour, demonstrating leadership and organizational excellence.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3>Middlesex Club Coordinator</h3>
+                    <p class="year">2022-2023</p>
+                    <p>Led student organization activities, fostering community engagement and coordinating campus events.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">✅</div>
+                    <h3>Professional Certifications</h3>
+                    <p class="year">Ongoing</p>
+                    <p>Multiple verified certifications in data analytics, business intelligence, and information systems.</p>
+                    <a href="https://www.linkedin.com/in/adrian-jackson-morilla-a5899b203/details/certifications/" target="_blank">View All Certifications →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documents" class="documents-section">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Documents & Publications</h2>
+            <p class="section-subtitle">Academic papers, research projects, and professional documentation</p>
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="document-icon">📄</div>
+                    <p class="doc-type">Curriculum Vitae</p>
+                    <h3>Professional CV</h3>
+                    <p>Comprehensive resume highlighting education, experience, skills, and achievements in Business Analytics and Information Systems.</p>
+                    <a href="documents/Adrian-Jackson-Morilla-CV.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download CV
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">📊</div>
+                    <p class="doc-type">Academic Coursework</p>
+                    <h3>Business Intelligence Analysis</h3>
+                    <p>Comprehensive BI analysis for Lulu Group International LLC, featuring data warehousing, ETL processes, and OLAP cube design.</p>
+                    <a href="documents/Business-Intelligence-Coursework.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Paper
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">🏢</div>
+                    <p class="doc-type">Case Study</p>
+                    <h3>Strategic Information Systems</h3>
+                    <p>MIS consultancy report for Provident Real Estate covering globalization, networking, agile methodologies, and AI integration.</p>
+                    <a href="documents/Strategic-Information-Systems.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Report
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">🔒</div>
+                    <p class="doc-type">Research Paper</p>
+                    <h3>Ethical Issues & GDPR</h3>
+                    <p>Analysis of ethical considerations and copyright infringements in web privacy, focusing on GDPR compliance and data protection.</p>
+                    <a href="documents/Ethical-Issues-Research.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Paper
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">📝</div>
+                    <p class="doc-type">Final Assessment</p>
+                    <h3>Information Systems Analysis</h3>
+                    <p>Comprehensive assessment covering UML diagrams, system design, GDPR regulations, and security controls implementation.</p>
+                    <a href="documents/Final-Assessment.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Document
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">📚</div>
+                    <p class="doc-type">Literature Review</p>
+                    <h3>Academic Literature Review</h3>
+                    <p>In-depth literature review examining HRIS and human resource management systems in organizational contexts.</p>
+                    <a href="documents/Literature-Review.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Review
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">🎤</div>
+                    <p class="doc-type">Presentation</p>
+                    <h3>Undergraduate Research Presentation</h3>
+                    <p>Presentation on Neuralink Integration with IoT and Smart Homes, examining efficiency and safety implications.</p>
+                    <a href="documents/UG-Presentation.pdf" class="download-btn" target="_blank">
+                        <span>📥</span> View/Download Slides
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-bg-pattern"></div>
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm currently pursuing my Master's in Business Analytics and actively seeking opportunities in data analytics, business intelligence, and consulting roles. Let's connect and discuss how I can contribute to your organization!</p>
+                <div class="contact-links">
+                    <a href="mailto:AdrianMorilla3508@gmail.com" class="contact-link">
+                        <span>📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            <small>AdrianMorilla3508@gmail.com</small>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/adrian-jackson-morilla-a5899b203/" target="_blank" class="contact-link">
+                        <span>💼</span>
+                        <div>
+                            <strong>LinkedIn</strong><br>
+                            <small>Connect with me</small>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/971568310389" target="_blank" class="contact-link">
+                        <span>💬</span>
+                        <div>
+                            <strong>WhatsApp (UAE)</strong><br>
+                            <small>+971 56 831 0389</small>
+                        </div>
+                    </a>
+                    <a href="tel:+15138015617" class="contact-link">
+                        <span>📱</span>
+                        <div>
+                            <strong>US Phone</strong><br>
+                            <small>+1 (513) 801-5617</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Adrian Jackson M. Morilla. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.9;">Built with passion for data-driven solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links with better offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    const headerHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = targetPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    }
+                }
+            });
+        });
+
+        // Improved active state for navigation links
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function updateActiveNav() {
+            const scrollY = window.pageYOffset + 100;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.style.color = '';
+                        link.style.fontWeight = '';
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.style.color = 'var(--primary)';
+                            link.style.fontWeight = '700';
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .achievement-card, .timeline-item, .education-card, .skill-category, .gallery-item, .document-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Header shadow on scroll
+        const nav = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 0) {
+                nav.style.boxShadow = '0 4px 20px rgba(37, 99, 235, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
